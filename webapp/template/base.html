@@ -1,0 +1,13 @@
+<html>
+    <head>
+        {{ if .title }}
+            <title>{{ .title }}</title>
+        {{ else }}
+            <title>Título por defecto</title>
+        {{ end }}
+    </head>
+    <body>
+        <div>* ¡GoBlog Utiliza plantillas con herencia! *</div>
+        {{ template "index.html" . }}
+    </body>
+</html>

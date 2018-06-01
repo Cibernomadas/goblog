@@ -1,0 +1,6 @@
+<p>Hola <b>{{ .username }}</b></p>
+{{ range $key, $value := .posts }}
+<div><p>{{ $value.user }} ha escrito: <b>{{ $value.body }}</b></p></div>
+{{ else }}
+<div><p>No hay mensajes</p></div>
+{{ end }}
