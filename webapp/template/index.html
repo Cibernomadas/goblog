@@ -1,6 +1,12 @@
-<p>Hola <b>{{ .username }}</b></p>
-{{ range $key, $value := .posts }}
-<div><p>{{ $value.user }} ha escrito: <b>{{ $value.body }}</b></p></div>
-{{ else }}
-<div><p>No hay mensajes</p></div>
-{{ end }}
+<div>
+    <h1>Sign In</h1>
+    <form method="POST" action="/login">
+        <label>Username:</label>
+        <input type="text" name="username">
+        <br>
+        <label>Password:</label>
+        <input type="password" name="password">
+        <br>
+        <button type="submit">Sign In</button>
+    </form>
+</div>

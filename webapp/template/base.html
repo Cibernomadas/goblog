@@ -7,7 +7,16 @@
         {{ end }}
     </head>
     <body>
-        <div>* ¡GoBlog Utiliza plantillas con herencia! *</div>
+        <div>
+            GoBlog:
+            <a href="/">Homepage</a>
+            <a href="/login">Login</a>
+        </div>
+        <hr>
+        {{ if .error }}
+            <p>Error: {{ .error }} </p>
+        {{ end }}
+
         {{ template "index.html" . }}
     </body>
 </html>

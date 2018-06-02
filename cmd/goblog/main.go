@@ -1,6 +1,8 @@
 package main
 
-import "github.com/cibernomadas/goblog/webapp/router"
+import (
+	"github.com/cibernomadas/goblog/webapp/router"
+)
 
 func main() {
 	srv := router.NewServer()
