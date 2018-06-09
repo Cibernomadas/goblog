@@ -1,52 +1,31 @@
 package router
 
 import (
-	"net/http"
-
+	"github.com/cibernomadas/goblog/webapp/database"
+	"github.com/cibernomadas/goblog/webapp/router/handlers"
 	"github.com/gin-contrib/multitemplate"
 	"github.com/gin-gonic/gin"
 )
 
 func NewServer() *gin.Engine {
 	srv := gin.Default()
+	srv.Use(ResisterDatabase())
 	srv.HTMLRender = templateRender()
 	return srv
 }
 
 func RegisterRoutes(srv *gin.Engine) {
-	srv.GET("/", indexFn)
+	srv.GET("/", handlers.IndexFn)
 
-	srv.GET("/login", loginFn)
-	srv.POST("/login", loginFn)
+	srv.GET("/login", handlers.LoginFn)
+	srv.POST("/login", handlers.LoginFn)
 }
 
-func indexFn(c *gin.Context) {
-	c.HTML(http.StatusOK, "index", gin.H{
-		"title": "Hi! GoBlog.",
-	})
-}
-
-func loginFn(c *gin.Context) {
-	if c.Request.Method == http.MethodGet { // Serve login page
-		c.HTML(http.StatusOK, "index", gin.H{
-			"title": "Hi! GoBlog.",
-		})
-	} else if c.Request.Method == http.MethodPost { // Process login
-		var login loginForm
-		if err := c.ShouldBind(&login); err == nil {
-			// TODO:
-		} else {
-			c.HTML(http.StatusOK, "index", gin.H{
-				"title": "Hi! GoBlog.",
-				"error": "Required fields not provided.",
-			})
-		}
+func ResisterDatabase() gin.HandlerFunc {
+	return func(c *gin.Context) {
+		c.Set("db", database.DB)
+		c.Next()
 	}
-}
-
-type loginForm struct {
-	Username string `form:"username" binding:"required"`
-	Password string `form:"password" binding:"required"`
 }
 
 func templateRender() multitemplate.Renderer {
