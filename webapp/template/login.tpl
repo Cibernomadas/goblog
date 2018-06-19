@@ -1,3 +1,4 @@
+{{define "content"}}
 <div>
     <h1>Sign In</h1>
     <form method="POST" action="/login">
@@ -10,3 +11,4 @@
         <button type="submit">Sign In</button>
     </form>
 </div>
+{{end}}

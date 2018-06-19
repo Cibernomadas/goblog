@@ -24,10 +24,7 @@
 #   go-tests = true
 #   unused-packages = true
 
-
-[[constraint]]
-  branch = "master"
-  name = "github.com/gin-contrib/multitemplate"
+required = ["github.com/mattn/go-sqlite3"]
 
 [[constraint]]
   name = "github.com/gin-gonic/gin"
@@ -43,5 +40,17 @@
   version = "1.9.1"
 
 [[constraint]]
-  name = "github.com/mattn/go-sqlite3"
-  version = "1.7.0"
+  branch = "master"
+  name = "golang.org/x/crypto"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/gin-contrib/sessions"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/foolin/gin-template"
+
+[[constraint]]
+  branch = "master"
+  name = "github.com/kidstuff/mongostore"
