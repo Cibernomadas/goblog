@@ -22,7 +22,9 @@ func NewServer() *gin.Engine {
 	srv := gin.Default()
 	srv.Use(ResisterDatabase())
 	srv.Use(RegisterSession())
+
 	srv.HTMLRender = TemplateRender()
+
 	return srv
 }
 
