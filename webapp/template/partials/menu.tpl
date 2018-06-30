@@ -3,7 +3,7 @@
     GoBlog
     <a href="/">Homepage</a>
     {{ if .user }}
-    <span>Welcome {{ .user.Username }}</span>
+    <a href="/user/{{ .user.Username }}">Profile</a>
     <a href="/logout">Logout</a>
     {{ else }}
     <a href="/login">Login</a>

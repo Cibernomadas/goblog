@@ -36,7 +36,10 @@ func RegisterRoutes(srv *gin.Engine) {
 	srv.POST("/register", handlers.RegisterFn)
 
 	auth := srv.Group("", handlers.Authenticated)
+	auth.GET("/user/:name", handlers.ProfileFn)
 	auth.GET("/logout", handlers.LogoutFn)
+	auth.GET("/edit_profile", handlers.EditProfileFn)
+	auth.POST("/edit_profile", handlers.EditProfileFn)
 }
 
 func ResisterDatabase() gin.HandlerFunc {
@@ -76,6 +79,7 @@ func TemplatePartials() []string {
 	return []string{
 		path.Join("partials", "menu"),
 		path.Join("partials", "error"),
+		path.Join("partials", "posts"),
 	}
 }
 

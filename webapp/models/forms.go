@@ -15,3 +15,8 @@ type RegistrationForm struct {
 func (r *RegistrationForm) CheckPasswords() bool {
 	return r.PasswordA == r.PasswordB
 }
+
+type EditProfile struct {
+	Username string `form:"username"  binding:"required"`
+	AboutMe  string `form:"about_me"  binding:"required"`
+}
